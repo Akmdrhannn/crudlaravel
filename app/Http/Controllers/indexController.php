@@ -14,8 +14,7 @@ class indexController extends Controller
      */
     public function index()
     {
-        $data['tes'] = 'Raihan';
-        return view('index', $data);
+        return view('index');
     }
 
     /**

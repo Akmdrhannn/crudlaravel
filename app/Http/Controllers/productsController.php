@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\products;
 use Illuminate\Http\Request;
 
 class productsController extends Controller
@@ -14,7 +15,8 @@ class productsController extends Controller
      */
     public function index()
     {
-        return view('products/products');
+        $data['productsModel']=products::all();
+        return view('products/products',$data);
     }
 
     /**
@@ -24,7 +26,8 @@ class productsController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('products/add');
     }
 
     /**
@@ -35,7 +38,21 @@ class productsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nameInput' => 'required|string',
+            'descInput' => 'required|string|min:65|max:255|nullable',
+            'priceInput' => 'required',
+            'qtyInput' => 'required|int',
+        ]);
+
+        products::create([
+            'name' => $validated['nameInput'],
+            'description' => $validated['descInput'],
+            'price' => $validated['priceInput'],
+            'qty' => $validated['qtyInput'],
+        ]);
+        return redirect('/products');
+
     }
 
     /**
@@ -57,7 +74,9 @@ class productsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['productsModel'] = products::find($id);
+        return view('products/edit',$data);
+
     }
 
     /**
@@ -69,7 +88,20 @@ class productsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'nameInput' => 'required|string',
+            'descInput' => 'required|string|min:65|max:255|nullable',
+            'priceInput' => 'required|numeric',
+            'qtyInput' => 'required|int',
+        ]);
+
+        products::where('id',$id)->update([
+            'name' => $validated['nameInput'],
+            'description' => $validated['descInput'],
+            'price' => $validated['priceInput'],
+            'qty' => $validated['qtyInput'],
+        ]);
+        return redirect('/products');
     }
 
     /**
@@ -80,6 +112,7 @@ class productsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        products::destroy($id);
+        return redirect('/products');
     }
 }

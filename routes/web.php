@@ -22,6 +22,15 @@ use App\Http\Controllers\categoriesController;
 //     return view('index');
 // });
 Route::get('/', [indexController::class, 'index']);
-Route::get('cart', [cartController::class, 'index']);
-Route::get('products', [productsController::class, 'index']);
+// Cart Controller
+Route::get('/cart', [cartController::class, 'index']);
+// Product Controller
+Route::get('/products', [productsController::class, 'index']);
+Route::get('/products/add', [productsController::class, 'create']);
+Route::get('/products/{id}/edit', [productsController::class, 'edit']);
+Route::get('/products/{id}/delete', [productsController::class, 'destroy']);
+
+Route::post('/products',[productsController::class,'store']);
+route::put('/products/{id}',[productsController::class,'update']);
+// Categories Controller
 Route::get('categories', [categoriesController::class, 'index']);
