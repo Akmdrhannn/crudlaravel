@@ -48,6 +48,11 @@
                         Quantity field must be minimal 1 pcs
                     </div>
                 @enderror
+                <div class="mb-3">
+                    <label for="categoryInput">Category</label>
+                    <input type="number" class="form-control @error('categoryInput') is-invalid @enderror"
+                        id="categoryInput" name="categoryInput">
+                </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>

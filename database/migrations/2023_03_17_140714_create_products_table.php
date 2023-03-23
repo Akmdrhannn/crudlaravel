@@ -19,6 +19,8 @@ return new class extends Migration
             $table->text('description');
             $table->unsignedInteger('price')->default(0);
             $table->bigInteger('qty');
+            $table->foreignId('categories_id');
+            $table->foreign('categories_id')->references('id')->on('categories');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

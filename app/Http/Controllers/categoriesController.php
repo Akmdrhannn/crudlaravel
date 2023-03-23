@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\categories;
 use Illuminate\Http\Request;
 
 class categoriesController extends Controller
@@ -14,7 +15,8 @@ class categoriesController extends Controller
      */
     public function index()
     {
-        return view('categories/categories');
+        $data['categoriesModel']=categories::all();
+        return view('categories/categories',$data);
     }
 
     /**
@@ -24,7 +26,7 @@ class categoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories/add');
     }
 
     /**
@@ -35,7 +37,15 @@ class categoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nameInput1' => 'required|string|max:20'
+
+        ]);
+
+        categories::create([
+            'name' => $request->param('nameInput1')
+        ]);
+        return redirect('/categories');
     }
 
     /**
@@ -57,7 +67,8 @@ class categoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data['categoriesModel']= categories::find($id);
+        return view('categories/edit',$data);
     }
 
     /**
@@ -69,7 +80,14 @@ class categoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validated = $request->validate([
+            'nameInput1' => 'required|string|max:20'
+        ]);
+
+        categories::where('id',$id)->update([
+            'name' => $validated('nameInput1')
+        ]);
+        return redirect('/categories');
     }
 
     /**
@@ -80,6 +98,7 @@ class categoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        categories::destroy($id);
+        return redirect('/categories');
     }
 }

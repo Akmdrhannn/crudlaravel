@@ -19,6 +19,10 @@ class productsController extends Controller
         return view('products/products',$data);
     }
 
+    public function find(){
+
+    }
+
     /**
      * Show the form for creating a new resource.
      *
