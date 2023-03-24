@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\categories;
 use App\Models\products;
 use Illuminate\Http\Request;
 
@@ -15,13 +16,10 @@ class productsController extends Controller
      */
     public function index()
     {
-        $data['productsModel']=products::all();
+        $data['productsModel']=products::with('categories')->get();
         return view('products/products',$data);
     }
 
-    public function find(){
-
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -30,8 +28,8 @@ class productsController extends Controller
      */
     public function create()
     {
-
-        return view('products/add');
+        $data['categoriesModel']= categories::all();
+        return view('products/add',$data);
     }
 
     /**
@@ -47,6 +45,7 @@ class productsController extends Controller
             'descInput' => 'required|string|min:65|max:255|nullable',
             'priceInput' => 'required',
             'qtyInput' => 'required|int',
+            'categoriesInput' => 'required'
         ]);
 
         products::create([
@@ -54,6 +53,7 @@ class productsController extends Controller
             'description' => $validated['descInput'],
             'price' => $validated['priceInput'],
             'qty' => $validated['qtyInput'],
+            'categories_id' => $validated['categoriesInput'],
         ]);
         return redirect('/products');
 
@@ -79,6 +79,7 @@ class productsController extends Controller
     public function edit($id)
     {
         $data['productsModel'] = products::find($id);
+        $data['categoriesModel']= categories::all();
         return view('products/edit',$data);
 
     }
@@ -97,6 +98,7 @@ class productsController extends Controller
             'descInput' => 'required|string|min:65|max:255|nullable',
             'priceInput' => 'required|numeric',
             'qtyInput' => 'required|int',
+            'categoriesInput' => 'required',
         ]);
 
         products::where('id',$id)->update([
@@ -104,6 +106,7 @@ class productsController extends Controller
             'description' => $validated['descInput'],
             'price' => $validated['priceInput'],
             'qty' => $validated['qtyInput'],
+            'categories_id' => $validated['categoriesInput']
         ]);
         return redirect('/products');
     }

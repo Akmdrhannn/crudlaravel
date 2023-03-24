@@ -23,7 +23,7 @@ class products extends Seeder
                 'description' => $faker->paragraph,
                 'price' => $faker->numberBetween(20000,50000),
                 'qty' => $faker->numberBetween(1,50),
-                'categories_id' => $faker->numberBetween(1,1),
+                'categories_id' => $faker->numberBetween(1,2),
             ]);
         }
     }

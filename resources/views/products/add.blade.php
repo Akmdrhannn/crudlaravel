@@ -49,9 +49,18 @@
                     </div>
                 @enderror
                 <div class="mb-3">
-                    <label for="categoryInput">Category</label>
-                    <input type="number" class="form-control @error('categoryInput') is-invalid @enderror"
-                        id="categoryInput" name="categoryInput">
+                    <select class="form-select @error('categoriesInput') is-invalid @enderror" name="categoriesInput"
+                        id="categoriesInput">
+                        <option selected disabled>Category</option>
+                        @foreach ($categoriesModel as $item)
+                            <option value="{{ $item->id }}">{{ $item->id }} - {{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                    @error('categoriesInput')
+                        <div class="invalid-feedback">
+                            Choose item category
+                        </div>
+                    @enderror
                 </div>
                 <button class="btn btn-primary" type="submit">Submit</button>
         </form>

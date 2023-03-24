@@ -50,6 +50,22 @@
                     </div>
                 @enderror
             </div>
+            <div class="mb-3">
+                <select class="form-select @error('categoriesInput') is-invalid @enderror" name="categoriesInput"
+                    id="categoriesInput">
+                    <option selected disabled>Category</option>
+                    @foreach ($categoriesModel as $item)
+                        <option value="{{ $item->id }}"
+                            {{ $productsModel->category_id == $item->id ? 'selected' : '' }}>
+                            {{ $item->name }}</option>
+                    @endforeach
+                </select>
+                @error('categoriesInput')
+                    <div class="invalid-feedback">
+                        Choose item category
+                    </div>
+                @enderror
+            </div>
             <button class="btn btn-primary" type="submit">Edit item</button>
         </form>
     </div>

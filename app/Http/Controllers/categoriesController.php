@@ -24,6 +24,12 @@ class categoriesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function dashboard()
+    {
+        $data['categoriesModel']=categories::all();
+        return view('categories/cgdashboard',$data);
+    } 
     public function create()
     {
         return view('categories/add');
@@ -43,9 +49,9 @@ class categoriesController extends Controller
         ]);
 
         categories::create([
-            'name' => $request->param('nameInput1')
+            'name' =>$validated['nameInput1']
         ]);
-        return redirect('/categories');
+        return redirect('/categories/cgdashboard');
     }
 
     /**
@@ -68,7 +74,7 @@ class categoriesController extends Controller
     public function edit($id)
     {
         $data['categoriesModel']= categories::find($id);
-        return view('categories/edit',$data);
+        return view('/categories/edit',$data);
     }
 
     /**
@@ -85,9 +91,9 @@ class categoriesController extends Controller
         ]);
 
         categories::where('id',$id)->update([
-            'name' => $validated('nameInput1')
+            'name' => $validated['nameInput1']
         ]);
-        return redirect('/categories');
+        return redirect('categories/cgdashboard');
     }
 
     /**
@@ -99,6 +105,6 @@ class categoriesController extends Controller
     public function destroy($id)
     {
         categories::destroy($id);
-        return redirect('/categories');
+        return redirect('/categories/cgdashboard');
     }
 }

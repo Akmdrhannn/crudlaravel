@@ -14,5 +14,14 @@ class products extends Model
         'description',
         'price',
         'qty',
+        'categories_id'
     ];
+
+    public function categories(){
+        return $this->belongsTo(categories::class);
+    }
+    public function cart(){
+        return $this->hasMany(cart::class);
+    }
+
 }

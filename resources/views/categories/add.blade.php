@@ -4,7 +4,7 @@
 @section('content')
     <div class="container">
         {{-- Add Product --}}
-        <a class="btn btn-warning  mt-2 mb-2" href="{{ url('categories') }}">Back to Categories</a>
+        <a class="btn btn-warning  mt-2 mb-2" href="{{ url('/categories/cgdashboard') }}">Back to Categories Dashboard</a>
         {{-- Form add product --}}
         <form action="{{ url('/categories') }}" method="post">
             @csrf
