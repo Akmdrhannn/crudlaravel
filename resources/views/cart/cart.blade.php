@@ -10,7 +10,7 @@
                     </div>
                     @foreach ($cartModel as $item)
                         <form action="cart/{{ $item->id }}" method="get">
-                            <input type="hidden" name="idInput" value="{{ $item->id }}">
+                            <input type="hidden" name="idInput" value="{{ $item->products_id }}">
                             <div class="card rounded-3 mb-4">
                                 <div class="card-body p-4">
                                     <div class="row d-flex justify-content-between align-items-center">
@@ -40,8 +40,9 @@
                                             <h5 class="mb-0">Rp {{ number_format($item->products->price * $item->qty) }}
                                             </h5>
                                             <div style="display:grid;">
-                                                <h5 style="margin-left: 23px" class="mb-0"><a href="cart"><button
-                                                            class="btn btn-warning" type="submit">Save</button></a>
+                                                <h5 style="margin-left: 23px" class="mb-0"><a
+                                                        href="cart/{{ $item->id }}"><button class="btn btn-warning"
+                                                            type="submit">Save</button></a>
                                                 </h5>
                                                 <h5 style="margin-left: 23px" class="mb-0"><a
                                                         href="/cart/{{ $item->id }}/delete"
