@@ -37,6 +37,8 @@ Route::get('/products/{id}/delete', [productsController::class, 'destroy']);
 
 Route::post('/products',[productsController::class,'store']);
 route::put('/products/{id}',[productsController::class,'update']);
+
+Route::get('/products/cgdashboard',[productsController::class,'dashboard']);
 // Categories Controller
 Route::get('/categories', [categoriesController::class, 'index']);
 Route::get('/categories/add',[categoriesController::class,'create']);

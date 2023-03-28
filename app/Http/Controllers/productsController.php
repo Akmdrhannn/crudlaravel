@@ -20,6 +20,11 @@ class productsController extends Controller
         return view('products/products',$data);
     }
 
+    public function dashboard()
+    {
+        $data['productsModel']=products::all();
+        return view('products/cgdashboard',$data);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -55,7 +60,7 @@ class productsController extends Controller
             'qty' => $validated['qtyInput'],
             'categories_id' => $validated['categoriesInput'],
         ]);
-        return redirect('/products');
+        return redirect('/products/cgdashboard');
 
     }
 
@@ -108,7 +113,7 @@ class productsController extends Controller
             'qty' => $validated['qtyInput'],
             'categories_id' => $validated['categoriesInput']
         ]);
-        return redirect('/products');
+        return redirect('/products/cgdashboard');
     }
 
     /**
@@ -120,6 +125,6 @@ class productsController extends Controller
     public function destroy($id)
     {
         products::destroy($id);
-        return redirect('/products');
+        return redirect('/products/cgdashboard');
     }
 }
