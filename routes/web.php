@@ -5,7 +5,7 @@ use App\Http\Controllers\indexController;
 use App\Http\Controllers\cartController;
 use App\Http\Controllers\productsController;
 use App\Http\Controllers\categoriesController;
-
+use App\Http\Controllers\isLogin;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +22,10 @@ use App\Http\Controllers\categoriesController;
 //     return view('index');
 // });
 Route::get('/', [indexController::class, 'index']);
+
+// Auth controller
+Route::get('/logreg/login', [isLogin::class, 'index']);
+
 // Cart Controller
 Route::get('/cart',[cartController::class,'index']);
 Route::get('/cart',[cartController::class,'create']);
