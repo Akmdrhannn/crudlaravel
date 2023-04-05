@@ -1,8 +1,8 @@
 Akhmad Raihan Aulia Fikri  /  Universitas Trunojoyo Madura<br>
 CRUD Online Shop in laravel and CMS for Admin/Seller
 <br><hr>
-autentikasi manual<br>
-notifikasi alert menggunakan sweetalert
+Autentikasi manual<br>
+Notifikasi alert menggunakan sweetalert
 
 <hr>
 Cara memakai :<br>
