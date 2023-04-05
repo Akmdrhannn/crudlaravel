@@ -6,12 +6,12 @@ notifikasi alert menggunakan sweetalert
 
 <hr>
 Cara memakai :<br>
-1. composer install
-2. php artisan key:generate
-3. set database di ENV
-4. php artisan migrate
-5. composer require realrashid/sweet-alert
-6. php artisan sweetalert:publish 
+1. composer install<br>
+2. php artisan key:generate<br>
+3. set database di ENV<br>
+4. php artisan migrate<br>
+5. composer require realrashid/sweet-alert<br>
+6. php artisan sweetalert:publish <br>
 <hr>
 Cara menggunakan web:<br>
 Guest hanya bisa melihat view index saja pada index,produk dan kategori
