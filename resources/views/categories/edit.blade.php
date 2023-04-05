@@ -1,10 +1,12 @@
 @section('title', 'Edit item')
-@extends('layouts.main')
+@extends('layouts.mainaddedit')
 
 @section('content')
     <div class="container">
         {{-- Add Product --}}
-        <a class="btn btn-warning  mt-2 mb-2" href="{{ url('/categories/cgdashboard') }}">Back to categories dashboard</a>
+        <a class="btn btn-warning  mt-2 mb-2" href="{{ route('ct') }}">Back
+            to
+            categories dashboard</a>
         {{-- Form add product --}}
         <form action="/categories/{{ $categoriesModel->id }}" method="post">
             @method('PUT')

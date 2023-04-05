@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\categories;
 use App\Models\products;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class productsController extends Controller
 {
@@ -20,11 +21,6 @@ class productsController extends Controller
         return view('products/products',$data);
     }
 
-    public function dashboard()
-    {
-        $data['productsModel']=products::all();
-        return view('products/cgdashboard',$data);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -60,7 +56,7 @@ class productsController extends Controller
             'qty' => $validated['qtyInput'],
             'categories_id' => $validated['categoriesInput'],
         ]);
-        return redirect('/products/cgdashboard');
+        return redirect('/admin')->with('success', 'New data have been added');
 
     }
 
@@ -113,7 +109,7 @@ class productsController extends Controller
             'qty' => $validated['qtyInput'],
             'categories_id' => $validated['categoriesInput']
         ]);
-        return redirect('/products/cgdashboard');
+        return redirect('/admin')->with('success','Edit data success');
     }
 
     /**
@@ -125,6 +121,7 @@ class productsController extends Controller
     public function destroy($id)
     {
         products::destroy($id);
-        return redirect('/products/cgdashboard');
+        Alert::error('Data Deleted');
+        return redirect('/admin');
     }
 }

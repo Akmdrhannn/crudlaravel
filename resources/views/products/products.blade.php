@@ -3,8 +3,6 @@
 
 @section('content')
     <div class="container">
-        {{-- Add Product --}}
-        <a class="btn btn-primary mt-3 mb-3" href="{{ url('/products/cgdashboard') }}">Dashboard Products</a>
         {{-- Card Foreach --}}
         <div class="row">
             @foreach ($productsModel as $item)

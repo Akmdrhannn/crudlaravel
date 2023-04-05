@@ -4,8 +4,6 @@
 
 @section('content')
     <div class="container">
-        {{-- Add Categories --}}
-        <a class="btn btn-primary mt-3 mb-3" href="{{ url('/categories/cgdashboard') }}">Dashboard Categories</a>
         {{-- Categories --}}
         <div class="row">
             @foreach ($categoriesModel as $item)

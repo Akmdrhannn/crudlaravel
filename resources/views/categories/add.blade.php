@@ -1,10 +1,9 @@
 @section('title', 'Add Categories')
-@extends('layouts.main')
-
+@extends('layouts.mainaddedit')
 @section('content')
     <div class="container">
         {{-- Add Product --}}
-        <a class="btn btn-warning  mt-2 mb-2" href="{{ url('/categories/cgdashboard') }}">Back to Categories Dashboard</a>
+        <a class="btn btn-warning  mt-2 mb-2" href="{{ route('ct') }}">Back to Categories Dashboard</a>
         {{-- Form add product --}}
         <form action="{{ url('/categories') }}" method="post">
             @csrf
@@ -21,4 +20,5 @@
             <button class="btn btn-primary" type="submit">Submit</button>
         </form>
     </div>
+
 @endsection

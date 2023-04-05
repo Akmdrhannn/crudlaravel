@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\categories;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class categoriesController extends Controller
 {
@@ -28,7 +29,7 @@ class categoriesController extends Controller
     public function dashboard()
     {
         $data['categoriesModel']=categories::all();
-        return view('categories/cgdashboard',$data);
+        return view('admin/ct',$data);
     } 
     public function create()
     {
@@ -51,7 +52,7 @@ class categoriesController extends Controller
         categories::create([
             'name' =>$validated['nameInput1']
         ]);
-        return redirect('/categories/cgdashboard');
+        return redirect('admin/ct')->with('success', 'New data have been added');
     }
 
     /**
@@ -93,7 +94,7 @@ class categoriesController extends Controller
         categories::where('id',$id)->update([
             'name' => $validated['nameInput1']
         ]);
-        return redirect('categories/cgdashboard');
+        return redirect('/admin/ct')->with('success','Edit data success');
     }
 
     /**
@@ -105,6 +106,7 @@ class categoriesController extends Controller
     public function destroy($id)
     {
         categories::destroy($id);
-        return redirect('/categories/cgdashboard');
+        Alert::error('Data Deleted');
+        return redirect('/admin/ct');
     }
 }

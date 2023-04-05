@@ -21,6 +21,28 @@
                     <a class="nav-link" href="{{ url('/cart') }}">myCart</a>
                 </li>
             </ul>
+            {{-- navbar login --}}
+            <ul class="navbar-nav ms-auto">
+                @auth
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false" id="dropdownMenuLink">
+                        {{ Auth::user()->name }}
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">My Account</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="{{ route('logout') }}">Log out</a></li>
+                    </ul>
+                @endauth
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                @endguest
+            </ul>
+            </ul>
         </div>
     </div>
 </nav>
