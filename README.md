@@ -1,4 +1,4 @@
-Akhmad Raihan Aulia Fikri  /  Universitas Trunojoyo Madura
+Akhmad Raihan Aulia Fikri  /  Universitas Trunojoyo Madura<br>
 CRUD Online Shop in laravel and CMS for Admin/Seller
 <br><hr>
 autentikasi manual<br>
