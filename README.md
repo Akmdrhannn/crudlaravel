@@ -12,7 +12,6 @@ Cara memakai :<br>
 4. php artisan migrate<br>
 5. composer require realrashid/sweet-alert<br>
 6. kernel.php -> protected middleware group -> web : \RealRashid\SweetAlert\ToSweetAlert::class, <br>
-7. php artisan sweetalert:publish <br>
 <hr>
 Cara menggunakan web:<br>
 Guest hanya bisa melihat view index saja pada index,produk dan kategori
